@@ -13,7 +13,7 @@ Incluyendo:
 
 La vulnerabilidad aún no ha sido corregida.
 
-Se puede descargar la información de los aproximadamente **441000** registros de estudiantes de la Universidad Mayor de San Andrés (500 MB)
+Se puede descargar la información de los aproximadamente **441000** registros de estudiantes de la Universidad Mayor de San Andrés (560 MB)
 
 Responsabilidad de los programadores incompetentes contratados por el Rector de la UMSA 2024
 
@@ -51,7 +51,7 @@ This includes:
 
 The vulnerability has not yet been fixed.
 
-Information on approximately **441000** students of the Universidad Mayor de San Andrés can be downloaded (500 MB), 
+Information on approximately **441000** students of the Universidad Mayor de San Andrés can be downloaded (560 MB), 
 
 Responsibility lies with the incompetent programmers hired by the UMSA Rector in 2024
 
