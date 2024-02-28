@@ -17,6 +17,21 @@ Se puede descargar la información de los aproximadamente 441000 estudiantes de 
 
 Responsabilidad de los programadores incompetentes contratados por el Rector de la UMSA 2024
 
+# Ejecución utilizando una Terminal de Linux
+
+Copiar .env.prod to .env
+
+Llenar el archivo .env con las credenciales de estudiante regular
+
+Ejecutar el siguiente script en la terminal
+
+```sh
+chmod +x app.sh
+./app.sh
+```
+
+---
+
 # UMSA CPU DATA LEAK
 
 Any student can access information about any other UMSA student through the CPU portal of the SIA
@@ -35,3 +50,16 @@ The vulnerability has not yet been fixed.
 Information on approximately 441,000 students of the Universidad Mayor de San Andrés can be downloaded
 
 Responsibility lies with the incompetent programmers hired by the UMSA Rector in 2024
+
+# Execution using Linux Terminal
+
+Copy .env.prod to .env
+
+Fill the .env file with the student credentials
+
+Execute the following script in the terminal
+
+```sh
+chmod +x app.sh
+./app.sh
+```
