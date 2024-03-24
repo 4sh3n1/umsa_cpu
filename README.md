@@ -1,3 +1,4 @@
+
 # UMSA CPU DATA LEAK
 
 Cualquier estudiante puede obtener información de cualquier otro estudiante de la UMSA desde el portal CPU del SIA
@@ -27,11 +28,33 @@ cp .env.prod .env
 
 Llenar el archivo .env con las credenciales de estudiante regular
 
-Ejecutar el siguiente script en la terminal
+
+# ACTUALIZACION MARZO 2024
+
+Introdujeron un hot fix al sistema inhabilitado la descarga completa de la información 
+
+Aun es posible descargar de forma especifica solo con CI, herramienta actualizada e implementación con docker
+
+Un usuario anónimo nos envió la información en raw disponible en [RAW](https://mega.nz/file/068kBZTY#14td5BsG2mUg9uDLnUIreUvsabPd1orwd9vgiqm3Ffg)
+
+Ejecutar el siguiente script en la terminal remplazando `[CI]` por el CI a buscar
 
 ```sh
 chmod +x app.sh
-./app.sh
+./app.sh [CI]
+```
+
+Con Docker y compose remplazar en el archivo docker-compose.yaml el CI a buscar
+
+```sh
+docker compose build
+docker compose run
+```
+
+Solo Docker remplazar en el comando el `[CI]` por el CI a buscar
+```sh
+docker build . -t mi_image
+docker run --env-file .env -v ./download:/app/download mi_image /bin/bash /app/app.sh [CI]
 ```
 
 ---
@@ -67,7 +90,31 @@ Fill the .env file with the student credentials
 
 Execute the following script in the terminal
 
+
+# UPDATE MARCH 2024
+
+They introduced a hot fix to the system disabling the complete download of information.
+
+It is still possible to download specific information only with CI, updated tools, and implementation with Docker.
+
+An anonymous user sent us the information in raw format, available at:[RAW](https://mega.nz/file/068kBZTY#14td5BsG2mUg9uDLnUIreUvsabPd1orwd9vgiqm3Ffg)
+
+To execute the following script in the terminal, replacing `[CI]` with the CI to search
+
 ```sh
 chmod +x app.sh
-./app.sh
+./app.sh [CI]
+```
+
+With Docker and Compose replace in the docker-compose.yaml the `[CI]` with the CI to search
+
+```sh
+docker compose build
+docker compose run
+```
+
+Only with Docker replace in the command the `[CI]` with the CI to search
+```sh
+docker build . -t mi_image
+docker run --env-file .env -v ./download:/app/download mi_image /bin/bash /app/app.sh [CI]
 ```

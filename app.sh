@@ -1,7 +1,43 @@
 #!/bin/bash
 
 # Load environment variables
-source .env
+if [ -f .env ]; then
+    echo "Loading .env..."
+    source .env
+else
+    echo ".env file doesn't exist. Using local enviroment variables"
+fi
+
+
+get_env_value() {
+    local variable_name="$1"
+    local value="${!variable_name}"
+    if [ -z "$value" ]; then
+        echo "Error: Env variable not found '$variable_name'"
+        exit 1
+    else
+        echo "$value"
+    fi
+}
+
+SIA_CPU_USERNAME=$(get_env_value "SIA_CPU_USERNAME")
+SIA_CPU_PASSWORD=$(get_env_value "SIA_CPU_PASSWORD")
+
+# Verify CI parameter
+if [ $# -eq 0 ]; then
+    echo "Please add parameter to search app.sh <CI>" >&2
+    exit 1
+fi
+dip="$1"
+
+folder="download"
+if [ ! -d "$folder" ]; then
+    # Si la carpeta no existe, crearla
+    mkdir -p "$folder"
+    echo "Folder '$folder' created"
+else
+    echo "Folder '$folder' already exists"
+fi
 
 # Define function for MD5 hashing
 md5() {
@@ -32,12 +68,12 @@ payload=''
 
 # Define filename
 format=$(date +"%Y-%m-%d_%H-%M-%S")
-name="raw_${format}.txt"
+name="raw_${dip}_${format}.txt"
 echo "${name}"
 
 # Send request
 echo "Sending request..."
-curl -s -X POST -H "${header1}" -H "${header2}"  --data-raw '{"dip": "", "idEstudiante": "", "nombreCompleto": "%"}' -L "https://sia.umsa.bo/cpu/estudiante/listarEstudiantes" -o ${name}
+curl -s -X POST -H "${header1}" -H "${header2}"  --data-raw "{\"dip\": \"$dip\"}" -L "https://sia.umsa.bo/cpu/estudiante/listarEstudiantes" -o ./download/${name}
 
 # Process response
 echo "End: ${name}"
